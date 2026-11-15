@@ -1,0 +1,15 @@
+@theme inline {
+  --color-primary: var(--brand-primary);
+  --color-primary-hover: var(--brand-primary-hover);
+  --color-primary-foreground: var(--brand-on-primary);
+  --color-background: var(--site-background);
+  --color-foreground: var(--site-foreground);
+  --color-surface: var(--site-surface);
+  --color-surface-muted: var(--site-surface-muted);
+  --color-border: var(--site-border);
+  --color-muted: var(--site-muted);
+  --color-overlay: var(--site-overlay);
+  --color-success: var(--status-success);
+  --color-danger: var(--status-danger);
+  --color-focus: var(--focus-ring);
+}
