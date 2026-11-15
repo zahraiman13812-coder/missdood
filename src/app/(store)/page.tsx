@@ -1,39 +1,39 @@
-import Image from "next/image";
-import { ArrowUpLeft, Gem, LayoutGrid, Palette, ShieldCheck } from "lucide-react";
-
-const features = [
-  { title: "هویت اختصاصی", subtitle: "طراحی بر پایه لوگوی برند", Icon: Gem },
-  { title: "تم قابل تغییر", subtitle: "رنگ‌های متمرکز و قابل مدیریت", Icon: Palette },
-  { title: "ساختار توسعه‌پذیر", subtitle: "صفحات و امکانات ماژولار", Icon: LayoutGrid },
-  { title: "عرضه مسئولانه", subtitle: "رعایت ضوابط کالا و فروش", Icon: ShieldCheck },
-];
+import Link from "next/link";
+import { ArrowUpLeft } from "lucide-react";
+import { CategoryTiles } from "@/components/home/category-tiles";
+import { Hero } from "@/components/home/hero";
+import { Showcase } from "@/components/home/showcase";
+import { brandHighlights } from "@/config/home";
+import { SectionHeading } from "@/components/home/section-heading";
 
 export default function HomePage() {
   return (
     <main>
-      <section className="relative overflow-hidden border-b border-border bg-background">
-        <div className="pointer-events-none absolute -left-32 -top-40 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
-        <div className="relative mx-auto grid min-h-[70vh] max-w-7xl items-center gap-10 px-5 py-16 md:grid-cols-2 md:px-8 md:py-24">
-          <div className="fade-in-up order-2 md:order-1">
-            <p className="mb-5 text-xs font-semibold tracking-[0.3em] text-primary" dir="ltr">MISS DOOD — OFFICIAL BRAND</p>
-            <h1 className="mb-6 text-4xl font-black leading-[1.65] sm:text-5xl">به دنیای <span className="text-primary">MISS DOOD</span> خوش آمدید</h1>
-            <p className="max-w-lg text-base leading-9 text-muted">فضایی با طراحی لوکس و هویتی متمایز. این نسخه، نقطه شروع طراحی وب‌سایت رسمی برند و توسعه ساختار محصولات مجاز است.</p>
-            <a href="#about" className="mt-8 inline-flex items-center gap-3 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover">آشنایی با برند <ArrowUpLeft size={17}/></a>
-            <p className="mt-5 text-xs text-muted">نسخه نمایشی — سفارش و پرداخت در حال حاضر غیرفعال است.</p>
-          </div>
-          <div className="fade-in-up order-1 flex items-center justify-center rounded-[2rem] border border-border bg-surface px-8 py-10 md:order-2">
-            <Image src="/logos/miss-dood-transparent.png" alt="نشان طلایی MISS DOOD" width={560} height={560} className="h-auto max-h-[490px] w-full object-contain" priority />
-          </div>
+      <Hero />
+      <div id="discover"><CategoryTiles /></div>
+      <Showcase />
+      <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24" aria-label="ویژگی‌های برند">
+        <SectionHeading eyebrow="OUR FOUNDATION" title="برند، فراتر از یک ظاهر" description="توجه به جزئیات در تجربه کاربری، از اولین بازدید تا مدیریت محتوای سایت." />
+        <div className="grid gap-4 md:grid-cols-3">
+          {brandHighlights.map(({ title, body, Icon }, i) => (
+            <div key={title} className="rounded-[1.5rem] border border-border bg-surface p-7">
+              <div className="mb-7 flex items-center justify-between"><Icon size={27} strokeWidth={1.4} className="text-primary"/><span className="font-serif text-xs tracking-widest text-primary/60">0{i+1}</span></div>
+              <h3 className="text-lg font-semibold text-foreground">{title}</h3>
+              <p className="mt-3 text-sm leading-8 text-muted">{body}</p>
+            </div>
+          ))}
         </div>
       </section>
-      <section id="about" className="mx-auto max-w-7xl px-5 py-20 md:px-8">
-        <div className="mb-10 max-w-2xl">
-          <p className="mb-3 text-xs font-semibold tracking-widest text-primary">BRAND EXPERIENCE</p>
-          <h2 className="text-3xl font-bold">یک تجربه دیجیتال با امضای برند</h2>
-          <p className="mt-5 leading-8 text-muted">سبک بصری سایت از ترکیب زمینه تیره، جزئیات طلایی، تایپوگرافی خوانا و کامپوننت‌های انعطاف‌پذیر ساخته شده است.</p>
-        </div>
-        <div id="roadmap" className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {features.map(({ title, subtitle, Icon }) => <article key={title} className="rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-primary/60"><Icon className="mb-8 text-primary" size={28}/><h3 className="mb-2 text-lg font-semibold">{title}</h3><p className="text-sm leading-7 text-muted">{subtitle}</p></article>)}
+      <section className="px-5 pb-20 md:px-8 md:pb-28" aria-label="معرفی برند">
+        <div className="relative mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 overflow-hidden rounded-[2rem] border border-primary/25 bg-surface px-7 py-12 sm:px-12 lg:flex-row lg:items-center lg:py-16">
+          <div className="pointer-events-none absolute -left-16 -bottom-36 size-80 rounded-full border border-primary/20" aria-hidden="true" />
+          <div className="pointer-events-none absolute -left-2 -bottom-32 size-64 rounded-full border border-primary/15" aria-hidden="true" />
+          <div className="relative max-w-2xl">
+            <p className="mb-4 font-serif text-xs tracking-[0.35em] text-primary" dir="ltr">WELCOME TO MISS DOOD</p>
+            <h2 className="text-2xl font-bold leading-relaxed text-foreground sm:text-3xl">یک امضای متفاوت در دنیای دیجیتال</h2>
+            <p className="mt-4 text-sm leading-9 text-muted">داستان برند، ارزش‌ها و راه‌های ارتباطی را در یک فضای اختصاصی و هماهنگ با هویت MISS DOOD دنبال کنید.</p>
+          </div>
+          <Link href="/about" className="relative inline-flex min-h-12 shrink-0 items-center gap-3 rounded-xl border border-primary px-6 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground">آشنایی با MISS DOOD <ArrowUpLeft size={18}/></Link>
         </div>
       </section>
     </main>

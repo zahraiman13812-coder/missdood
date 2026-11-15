@@ -1,4 +1,4 @@
-/* Only this file defines the default color values. No hardcoded colors in TSX. */
+/* All default literal colors live here. Components only consume semantic tokens. */
 :root {
   --brand-primary: #d4ad65;
   --brand-primary-hover: #e5c385;
@@ -9,7 +9,8 @@
   --site-surface-muted: #242328;
   --site-border: #373238;
   --site-muted: #b3a99c;
-  --site-overlay: rgba(0, 0, 0, 0.55);
+  --site-overlay: rgba(0, 0, 0, 0.74);
+  --site-shadow: rgba(0, 0, 0, 0.38);
   --status-success: #6cc09b;
   --status-danger: #e18080;
   --focus-ring: #d4ad65;
